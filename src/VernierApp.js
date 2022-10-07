@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit';
-
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
+import { until } from 'lit/directives/until.js';
 
 export class VernierApp extends LitElement {
   static get properties() {
@@ -21,7 +20,6 @@ export class VernierApp extends LitElement {
         color: #1a2b42;
         max-width: 960px;
         margin: 0 auto;
-        text-align: center;
         background-color: var(--vernier-app-background-color);
       }
 
@@ -54,37 +52,36 @@ export class VernierApp extends LitElement {
     `;
   }
 
+  /**
+   * List of recent natural events from NASA's EONET
+   *
+   * @return  {Element}
+   */
+  static async makeNaturalEventsList() {
+    const eventsData = await (await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?limit=15')).json();
+    const events = eventsData.events.map(event => html`
+      <li>${event.title}</li>
+    `);
+
+    return html`
+      <ol id="trends-list">
+        ${events}
+      </ol>
+      <p>Thanks, <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">EONET</a>!</p>
+    `;
+  }
+
   constructor() {
     super();
-    this.title = 'My app';
+    this.title = 'Natural Events';
   }
 
   render() {
     return html`
       <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
         <h1>${this.title}</h1>
-
-        <p>Edit <code>src/VernierApp.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        ${until(VernierApp.makeNaturalEventsList(), html`Loading...`)}
       </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
     `;
   }
 }

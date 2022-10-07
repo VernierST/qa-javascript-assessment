@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { fixture, expect } from '@open-wc/testing';
+import { fixture, expect, waitUntil } from '@open-wc/testing';
 
 import '../src/vernier-app.js';
 
@@ -12,7 +12,11 @@ describe('VernierApp', () => {
   it('renders a h1', () => {
     const h1 = element.shadowRoot.querySelector('h1');
     expect(h1).to.exist;
-    expect(h1.textContent).to.equal('My app');
+    expect(h1.textContent).to.equal('Natural Events');
+  });
+
+  it('renders a list of 15 natural event titles', async () => {
+    // Complete this test
   });
 
   it('passes the a11y audit', async () => {
