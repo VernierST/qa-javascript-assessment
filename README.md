@@ -1,19 +1,21 @@
-<p align="center">
-  <img width="200" src="https://open-wc.org/hero.png"></img>
-</p>
+Vernier QA JavaScript Assessment
+================================
 
-## Open-wc Starter App
+## Instructions
 
-[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://github.com/open-wc)
+Please take around 30 minutes to show your proficiency with writing tests in
+JavaScript. The component to test, _vernier-app_, makes a network request and
+renders a list based on the response. There are multiple ways to solve for the
+test scenario. Be prepared to discuss your solution, alternatives, and
+trade-offs.
 
-## Quickstart
-
-To get started:
-
-```bash
-npm init @open-wc
-# requires node 10 & npm 6 or higher
-```
+1. Clone the repo
+1. Do `npm install`
+1. Fill in the test in test/vernier-app.test.js where indicated,
+   `// Complete this test`
+1. Do `npm test` to see if everything passes
+1. Open a PR with your work
+1. Let the hiring manager know the PR is up
 
 ## Scripts
 
