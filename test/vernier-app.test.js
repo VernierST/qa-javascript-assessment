@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 
+// import makeNaturalEventsList from '../src/VernierApp.js'; //unsure how this import works when there is no default export with Lit
 import '../src/vernier-app.js';
 
 describe('VernierApp', () => {
@@ -16,25 +17,29 @@ describe('VernierApp', () => {
   });
 
   it('renders a list of 15 natural event titles', async () => {
-    //   // Complete this test
+    // Complete this test
+    // const { events } =  makeNaturalEventsList();
     // // check to ensure there is a list populating on the page
     // const ordList = element.shadowRoot.querySelector('ol');
     // expect(ordList).to.exist;
     // // check that there are 15 list items
-    // expect(ordList).to.have.lengthOf(15);
-    // // check that list items contain strings
+    // expect(events).to.have.lengthOf(15);
+    // // check that the first list item contains a string
     // const listItem = element.shadowRoot.querySelector('li');
     // expect(listItem).to.be.a('string');
-    // // // ideally would map through each list item to make sure each one contains a string
-    // // // for let (i=0, i.length i++) if string return true
+    // // check that all list items contain strings
+    // const isStringsArray = arr => arr.every(i => typeof i === 'string')
+    // expect(isStringsArray(events)).to.be.true;
     // // check that each string contains a natural event keyword
-    // const naturalEvents = ['Typhoon', 'Volcano', 'Storm', 'Fire', 'Fournaise', 'Tsunami', 'Earthquake', 'Hurricane', 'Tornado'];
-    // expect(listItem).to.contain.oneOf(naturalEvents);
-    // // // ideally would map through each list item to make sure each one contains a string
-    // // // for let (i=0, i.length i++) if string return true
+    // const naturalEvents = ['Typhoon', 'Volcano', 'Storm', 'Fire','Tsunami', 'Earthquake', 'Hurricane', 'Tornado'];
+    // expect(events[2]).to.contain.oneOf(naturalEvents);
+    // // this test should fail on events[8] since there is no english keyword
+    // // check that each li contains the exact string expected
+    // expect(events[0]).to.equal(['Typhoon Nesat']);
+    // expect(events[14]).to.equal(['Eagle Creek Fire']);
   });
 
-  // it('renders a p tag', () => {
+  // it('renders a p tag', async () => {
   //   const p = element.shadowRoot.querySelector('p');
   //   expect(p).to.exist;
   //   expect(p.textContent).to.contain('Thanks');
@@ -45,11 +50,12 @@ describe('VernierApp', () => {
   });
 });
 
-// how to show there are 15 natural event titles?
+// how to show there is a list 15 natural event titles?
 // 1. check that there is a list
 // 2. check that there are 15 <li></li>
 // 3. check that the <li></li> contain strings
 // 4. check that each string contains a natural event word
+// 5. check that each li contains the exact string expected
 
 // My notes for working through initial issues:
 // I've used superagent in the past, so need to figure out the syntax of the jest requests without superagent - find another way to make requests to the app
@@ -65,6 +71,6 @@ describe('VernierApp', () => {
 //   const ordList = element.shadowRoot.querySelector('#trends-list');
 //   console.log(ordList, 'exists');
 // });
-// either my syntax for implementing these is incorrect so I'm not properly letting the data load on the page before running the test, or ...
+// either my syntax for implementing these is incorrect so I'm not properly letting the data load on the page before running the test, or ... I'm missing something else entirely
 
 // learned about Chai

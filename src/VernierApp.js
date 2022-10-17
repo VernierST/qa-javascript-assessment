@@ -58,16 +58,21 @@ export class VernierApp extends LitElement {
    * @return  {Element}
    */
   static async makeNaturalEventsList() {
-    const eventsData = await (await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?limit=15')).json();
-    const events = eventsData.events.map(event => html`
-      <li>${event.title}</li>
-    `);
+    const eventsData = await (
+      await fetch('https://eonet.gsfc.nasa.gov/api/v3/events?limit=15')
+    ).json();
+    const events = eventsData.events.map(
+      event => html` <li>${event.title}</li> `
+    );
+    // console.log(events, 'events');
 
     return html`
       <ol id="trends-list">
         ${events}
       </ol>
-      <p>Thanks, <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">EONET</a>!</p>
+      <p>
+        Thanks, <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">EONET</a>!
+      </p>
     `;
   }
 
