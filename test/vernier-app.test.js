@@ -72,5 +72,3 @@ describe('VernierApp', () => {
 //   console.log(ordList, 'exists');
 // });
 // either my syntax for implementing these is incorrect so I'm not properly letting the data load on the page before running the test, or ... I'm missing something else entirely
-
-// learned about Chai
